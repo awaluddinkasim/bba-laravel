@@ -54,7 +54,7 @@
             <h1 class="font-bold text-xl mb-3">
                 Video
             </h1>
-            <iframe src="{{ $materi->url_youtube }}">
+            <iframe src="{{ $materi->url_youtube }}" height="300">
             </iframe>
         </div>
     </div>
