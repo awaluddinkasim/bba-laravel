@@ -41,12 +41,13 @@
                         onclick="document.location.href = '{{ route('kosakata.edit', $vocabulary->id) }}'">
                         <i class="uil uil-edit"></i>
                     </button>
-                    <button class="btn bg-danger text-white rounded" onclick="deleteData()">
-                        <i class="uil uil-trash"></i>
-                    </button>
-                    <form action="{{ route('kosakata.delete', $vocabulary->id) }}" method="post" id="deleteForm">
+                    <form action="{{ route('kosakata.delete', $vocabulary->id) }}" method="post" id="deleteForm"
+                        style="display: inline">
                         @method('DELETE')
                         @csrf
+                        <button type="button" class="btn bg-danger text-white rounded" onclick="deleteData()">
+                            <i class="uil uil-trash"></i>
+                        </button>
                     </form>
                 </div>
             </div>

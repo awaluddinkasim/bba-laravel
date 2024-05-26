@@ -18,22 +18,23 @@
 
 <x-layout title="{{ $materi->judul }}">
     <div class="flex flex-row justify-between mb-3">
-        <button tyoe="button" class="btn bg-primary text-white rounded"
+        <button type="button" class="btn bg-primary text-white rounded"
             onclick="document.location.href = '{{ route('materi.index') }}'">
-            <i class="uil uil-angle-double-left"></i>
+            <i class="uil uil-step-backward-alt"></i>
         </button>
 
         <div>
-            <button tyoe="button" class="btn bg-success text-white rounded"
+            <button type="button" class="btn bg-success text-white rounded"
                 onclick="document.location.href = '{{ route('materi.edit', $materi->id) }}'">
                 <i class="uil uil-edit"></i>
             </button>
-            <button tyoe="button" class="btn bg-danger text-white rounded" onclick="deleteData()">
-                <i class="uil uil-trash"></i>
-            </button>
-            <form action="{{ route('materi.delete', $materi->id) }}" method="post" id="deleteForm">
+            <form action="{{ route('materi.delete', $materi->id) }}" method="post" id="deleteForm"
+                style="display: inline">
                 @method('DELETE')
                 @csrf
+                <button type="button" class="btn bg-danger text-white rounded" onclick="deleteData()">
+                    <i class="uil uil-trash"></i>
+                </button>
             </form>
         </div>
     </div>
