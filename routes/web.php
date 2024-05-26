@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MateriController;
@@ -52,6 +53,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::patch('/{user:id}/update', [UserController::class, 'update'])->name('update');
         Route::delete('/{user:id}', [UserController::class, 'delete'])->name('delete');
     });
+
+    Route::get('/profile', [AccountController::class, 'index'])->name('profile');
+    Route::patch('/profile', [AccountController::class, 'update'])->name('profile.update');
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

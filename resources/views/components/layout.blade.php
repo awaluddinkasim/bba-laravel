@@ -113,7 +113,8 @@
 
                 <!-- Profile Edit Button -->
                 <div class="flex">
-                    <button class="bg-white rounded-full shadow-md p-2">
+                    <button class="bg-white rounded-full shadow-md p-2"
+                        onclick="document.location.href = '{{ route('profile') }}'">
                         <span class="sr-only">Edit Profil</span>
                         <span class="flex items-center justify-center h-6 w-6">
                             <i class="uil uil-user text-2xl"></i>
