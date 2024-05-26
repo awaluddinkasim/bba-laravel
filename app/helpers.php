@@ -6,6 +6,8 @@ use Stichoza\GoogleTranslate\GoogleTranslate;
 if (!function_exists('translate')) {
     function translate($text): array
     {
+        $text = str_replace(".", "", $text);
+
         $tr = new GoogleTranslate("ar");
         $tr->setSource("id");
 

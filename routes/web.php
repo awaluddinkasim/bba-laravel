@@ -38,8 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'percakapan-harian', 'as' => 'percakapan-harian.'], function () {
         Route::get('/', [PercakapanHarianController::class, 'index'])->name('index');
-        Route::get('/add', [PercakapanHarianController::class, 'create'])->name('add');
-        Route::get('/store', [PercakapanHarianController::class, 'store'])->name('store');
+        Route::post('/store', [PercakapanHarianController::class, 'store'])->name('store');
         Route::get('/{percakapanHarian:id}', [PercakapanHarianController::class, 'show'])->name('show');
         Route::get('/{percakapanHarian:id}/edit', [PercakapanHarianController::class, 'edit'])->name('edit');
         Route::patch('/{percakapanHarian:id}/update', [PercakapanHarianController::class, 'update'])->name('update');

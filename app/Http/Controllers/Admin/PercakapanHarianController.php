@@ -12,14 +12,9 @@ class PercakapanHarianController extends Controller
 {
     public function index(): View
     {
-        return view('pages.percakapan-harian', [
-            'daftarPercakapanHarian' => PercakapanHarian::orderBy('kalimat')->get()
+        return view('pages.percakapan', [
+            'daftarPercakapanHarian' => PercakapanHarian::orderBy('kalimat')->simplePaginate(10)
         ]);
-    }
-
-    public function create(): View
-    {
-        return view();
     }
 
     public function store(): RedirectResponse
@@ -30,22 +25,24 @@ class PercakapanHarianController extends Controller
 
         $translate = translate($data['kalimat']);
 
-        $data['arab'] = $translate('arab');
-        $data['latin'] = $translate('latin');
+        $data['arab'] = $translate['arab'];
+        $data['latin'] = $translate['latin'];
+
 
         PercakapanHarian::create($data);
+
 
         return redirect()->back()->with('success', 'Data berhasil disimpan');
     }
 
     public function show(PercakapanHarian $percakapanHarian): View
     {
-        return view();
+        return view('pages.percakapan-detail', compact('percakapanHarian'));
     }
 
     public function edit(PercakapanHarian $percakapanHarian): View
     {
-        return view();
+        return view('pages.percakapan-edit', compact('percakapanHarian'));
     }
 
     public function update(PercakapanHarian $percakapanHarian): RedirectResponse
@@ -58,13 +55,13 @@ class PercakapanHarianController extends Controller
 
         $percakapanHarian->update($data);
 
-        return redirect()->back()->with('success', 'Update data berhasil');
+        return redirect()->route('percakapan-harian.index')->with('success', 'Update data berhasil');
     }
 
     public function delete(PercakapanHarian $percakapanHarian): RedirectResponse
     {
         $percakapanHarian->delete();
 
-        return redirect()->back()->with('success', 'Data berhasil dihapus');
+        return redirect()->route('percakapan-harian.index')->with('success', 'Data berhasil dihapus');
     }
 }

@@ -7,10 +7,9 @@
 @endpush
 
 <x-layout title="Daftar Materi">
-    <h1 class="font-bold text-xl mb-3">
+    <x-elements.title class="mb-3">
         Materi Terbaru
-    </h1>
-
+    </x-elements.title>
     @foreach ($daftarMateri as $materi)
         <div class="card p-5 rounded cursor-pointer mb-3"
             onclick="document.location.href = '{{ route('materi.show', $materi->id) }}'">
