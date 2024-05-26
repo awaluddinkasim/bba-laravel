@@ -19,7 +19,7 @@ class MateriResource extends JsonResource
             'judul' => $this->judul,
             'konten' => $this->konten,
             'excerpt' => Str::limit(strip_tags($this->konten), 200),
-            'id_youtube' => end(explode('/', $this->url_youtube)),
+            'id_youtube' => explode('/', $this->url_youtube)[array_key_last(explode('/', $this->url_youtube))],
         ];
     }
 }
