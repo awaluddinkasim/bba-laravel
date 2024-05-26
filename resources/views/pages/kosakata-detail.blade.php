@@ -33,14 +33,16 @@
 
             <div class="flex justify-between mt-8">
                 <button class="btn bg-secondary text-white rounded"
-                    onclick="document.location.href = '{{ route('kosakata.index') }}'">Kembali</button>
+                    onclick="document.location.href = '{{ route('kosakata.index') }}'">
+                    <i class="uil uil-step-backward-alt"></i>
+                </button>
                 <div>
                     <button class="btn bg-success text-white rounded"
                         onclick="document.location.href = '{{ route('kosakata.edit', $vocabulary->id) }}'">
-                        Edit
+                        <i class="uil uil-edit"></i>
                     </button>
                     <button class="btn bg-danger text-white rounded" onclick="deleteData()">
-                        Delete
+                        <i class="uil uil-trash"></i>
                     </button>
                     <form action="{{ route('kosakata.delete', $vocabulary->id) }}" method="post" id="deleteForm">
                         @method('DELETE')
