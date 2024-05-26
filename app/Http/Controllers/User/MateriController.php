@@ -15,6 +15,6 @@ class MateriController extends Controller
         return response()->json([
             'message' => 'success',
             'daftarMateri' => MateriResource::collection(Materi::orderBy('judul')->get())
-        ]);
+        ], 200);
     }
 }

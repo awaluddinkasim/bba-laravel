@@ -16,7 +16,7 @@ class UserController extends Controller
         return response()->json([
             'message' => 'success',
             'user' => new UserResource(request()->user())
-        ]);
+        ], 200);
     }
 
     public function store(): JsonResponse
@@ -27,7 +27,7 @@ class UserController extends Controller
             'password' => 'required',
             'jk' => 'required',
             'alamat' => 'required'
-        ]);
+        ], 200);
 
         $data['password'] = Hash::make($data['password']);
 

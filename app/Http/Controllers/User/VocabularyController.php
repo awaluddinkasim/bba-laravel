@@ -15,6 +15,6 @@ class VocabularyController extends Controller
         return response()->json([
             'message' => 'success',
             'vocabularies' => VocabularyResource::collection(Vocabulary::orderBy('arti')->get())
-        ]);
+        ], 200);
     }
 }
