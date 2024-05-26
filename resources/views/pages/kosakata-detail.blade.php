@@ -32,7 +32,7 @@
             <p class="text-xl">{!! nl2br($vocabulary->contoh_kalimat) !!}</p>
 
             <div class="flex justify-between mt-8">
-                <button class="btn bg-secondary text-white rounded"
+                <button class="btn bg-primary text-white rounded"
                     onclick="document.location.href = '{{ route('kosakata.index') }}'">
                     <i class="uil uil-step-backward-alt"></i>
                 </button>
