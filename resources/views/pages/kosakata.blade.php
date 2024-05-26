@@ -13,13 +13,32 @@
 @endpush
 
 <x-layout title="Kosakata">
-    <div class="card p-6 rounded-lg">
+    <x-elements.card>
         <div class="flex justify-between items-center mb-4">
             <h2 class="font-semibold text-xl">Daftar Kosakata</h2>
-            <button class="btn bg-primary text-white rounded"
-                onclick="document.location.href = '{{ route('kosakata.add') }}'">
-                Tambah
-            </button>
+            <x-elements.form-modal title="Kosakata" action="{{ route('kosakata.store') }}">
+                <div class="mb-3">
+                    <label for="kataInput" class="text-gray-800 text-sm font-medium inline-block mb-2">Kata</label>
+                    <input type="text" id="kataInput" name="kata"
+                        class="form-input @error('kata') border-danger @enderror" required>
+                </div>
+                <div class="mb-3">
+                    <label for="latinInput" class="text-gray-800 text-sm font-medium inline-block mb-2">Latin</label>
+                    <input type="text" id="latinInput" name="latin"
+                        class="form-input @error('latin') border-danger @enderror" required>
+                </div>
+                <div class="mb-3">
+                    <label for="artiInput" class="text-gray-800 text-sm font-medium inline-block mb-2">Arti</label>
+                    <input type="text" id="artiInput" name="arti"
+                        class="form-input @error('arti') border-danger @enderror" required>
+                </div>
+                <div class="mb-3">
+                    <label for="contohInput" class="text-gray-800 text-sm font-medium inline-block mb-2">Contoh
+                        Kalimat</label>
+                    <textarea name="contoh_kalimat" id="contohInput" rows="5"
+                        class="form-input @error('contoh_kalimat') border-danger @enderror" required></textarea>
+                </div>
+            </x-elements.form-modal>
         </div>
 
         <table id="datatable" class="display" style="width:100%">
@@ -49,5 +68,5 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
+    </x-elements.card>
 </x-layout>
