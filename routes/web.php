@@ -18,7 +18,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'materi', 'as' => 'materi.'], function () {
         Route::get('/', [MateriController::class, 'index'])->name('index');
-        Route::get('/store', [MateriController::class, 'store'])->name('store');
+        Route::get('/add', [MateriController::class, 'create'])->name('add');
+        Route::post('/store', [MateriController::class, 'store'])->name('store');
         Route::get('/{materi:id}', [MateriController::class, 'show'])->name('show');
         Route::get('/{materi:id}/edit', [MateriController::class, 'edit'])->name('edit');
         Route::patch('/{materi:id}/update', [MateriController::class, 'update'])->name('update');
@@ -37,6 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'percakapan-harian', 'as' => 'percakapan-harian.'], function () {
         Route::get('/', [PercakapanHarianController::class, 'index'])->name('index');
+        Route::get('/add', [PercakapanHarianController::class, 'create'])->name('add');
         Route::get('/store', [PercakapanHarianController::class, 'store'])->name('store');
         Route::get('/{percakapanHarian:id}', [PercakapanHarianController::class, 'show'])->name('show');
         Route::get('/{percakapanHarian:id}/edit', [PercakapanHarianController::class, 'edit'])->name('edit');

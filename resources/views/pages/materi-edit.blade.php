@@ -50,27 +50,28 @@
             },
         });
 
-        function store() {
+        function update() {
             $('#kontenInput').val(quill.root.innerHTML)
             $('#materiForm').submit()
         }
     </script>
 @endpush
 
-<x-layout title="Buat Materi">
+<x-layout title="Edit Materi">
     <div class="card p-6 rounded-lg">
-        <form action="{{ route('materi.store') }}" method="post" id="materiForm">
+        <form action="{{ route('materi.update', $materi->id) }}" method="post" id="materiForm">
+            @method('PATCH')
             @csrf
             <div class="mb-3">
                 <label for="judulInput" class="text-gray-800 text-sm font-medium inline-block mb-2">Judul</label>
                 <input type="text" id="judulInput" name="judul"
-                    class="form-input @error('judul') border-danger @enderror" required>
+                    class="form-input @error('judul') border-danger @enderror" value="{{ $materi->judul }}" required>
             </div>
             <div class="mb-3">
                 <label for="kontenInput" class="text-gray-800 text-sm font-medium inline-block mb-2">Konten</label>
                 <!-- Quill Editors -->
                 <div id="snow-editor" style="height: 300px;">
-
+                    {!! $materi->konten !!}
                 </div>
                 <textarea class="hidden" name="konten" id="kontenInput" required></textarea>
             </div>
@@ -84,10 +85,10 @@
                     </div>
                     <input type="text" id="youtubeInput" name="url_youtube"
                         class="form-input @error('url_youtube') border-danger @enderror ltr:rounded-l-none rtl:rounded-r-none"
-                        required>
+                        value="{{ explode('//', $materi->url_youtube)[1] }}" required>
                 </div>
             </div>
-            <button tyoe="button" class="btn bg-primary text-white rounded mt-4" onclick="store()">Submit</button>
+            <button tyoe="button" class="btn bg-primary text-white rounded mt-4" onclick="update()">Simpan</button>
         </form>
     </div>
 </x-layout>

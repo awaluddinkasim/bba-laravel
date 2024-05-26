@@ -11,10 +11,27 @@
         </li>
 
         <li class="menu-item">
-            <a href="#" class="menu-link">
+            <a href="javascript:void(0)" data-hs-collapse="#sidenavMateri"
+                class="menu-link {{ request()->segment(1) == 'materi' ? 'open' : '' }}">
                 <span class="menu-icon"><i class="uil uil-book"></i></span>
                 <span class="menu-text"> Manajemen Materi </span>
+                <span class="menu-arrow"></span>
             </a>
+
+            <ul id="sidenavMateri" class="sub-menu {{ request()->segment(1) == 'materi' ? 'open' : 'hidden' }}">
+                <li class="menu-item">
+                    <a href="{{ route('materi.add') }}" class="menu-link">
+                        <span class="menu-dot"></span>
+                        <span class="menu-text">Buat Baru</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('materi.index') }}" class="menu-link">
+                        <span class="menu-dot"></span>
+                        <span class="menu-text">Daftar Materi</span>
+                    </a>
+                </li>
+            </ul>
         </li>
 
         <li class="menu-item">

@@ -13,13 +13,13 @@ class MateriController extends Controller
     public function index(): View
     {
         return view('pages.materi', [
-            'daftarMateri' => Materi::all()
+            'daftarMateri' => Materi::orderBy('id', 'DESC')->simplePaginate(10)
         ]);
     }
 
     public function create(): View
     {
-        return view();
+        return view('pages.materi-add');
     }
 
     public function store(): RedirectResponse
@@ -30,19 +30,21 @@ class MateriController extends Controller
             'url_youtube' => 'required'
         ]);
 
+        $data['url_youtube'] = embedYoutube($data['url_youtube']);
+
         Materi::create($data);
 
-        return redirect()->back()->with('success', 'Materi berhasil disimpan');
+        return redirect()->route('materi.index')->with('success', 'Materi berhasil disimpan');
     }
 
     public function show(Materi $materi): View
     {
-        return view();
+        return view('pages.materi-detail', compact('materi'));
     }
 
     public function edit(Materi $materi): View
     {
-        return view();
+        return view('pages.materi-edit', compact('materi'));
     }
 
     public function update(Materi $materi): RedirectResponse
@@ -53,15 +55,17 @@ class MateriController extends Controller
             'url_youtube' => 'required'
         ]);
 
+        $data['url_youtube'] = embedYoutube($data['url_youtube']);
+
         $materi->update($data);
 
-        return redirect()->back()->with('success', 'Update materi berhasil');
+        return redirect()->route('materi.show', $materi->id)->with('success', 'Update materi berhasil');
     }
 
     public function delete(Materi $materi): RedirectResponse
     {
         $materi->delete();
 
-        return redirect()->back()->with('success', 'Materi berhasil dihapus');
+        return redirect()->route('materi.index')->with('success', 'Materi berhasil dihapus');
     }
 }
