@@ -24,6 +24,7 @@
     @stack('styles')
 
     <!-- Head Js -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="{{ asset('assets/js/head.js') }}"></script>
 </head>
 
