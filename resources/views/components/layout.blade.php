@@ -105,8 +105,8 @@
             <div class="flex flex-col items-center h-full gap-4 py-10 px-3">
                 <!-- Profile Link -->
                 <a href="#" type="button" class="flex flex-col items-center gap-1">
-                    <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="user-image"
-                        class="rounded-full h-8 w-8">
+                    <img src="{{ asset('assets/images/users/avatar.svg') }}" alt="user-image"
+                        class="rounded-full h-8 w-8 mb-3">
                     <span class="font-medium text-base">{{ auth()->user()->nama }}</span>
                     <span class="text-sm">Admin</span>
                 </a>
