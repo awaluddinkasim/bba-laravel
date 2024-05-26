@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -17,7 +18,8 @@ class MateriResource extends JsonResource
         return [
             'judul' => $this->judul,
             'konten' => $this->konten,
-            'id_youtube' => end(explode('/', $this->url_youtube))
+            'excerpt' => Str::limit(strip_tags($this->konten), 200),
+            'id_youtube' => end(explode('/', $this->url_youtube)),
         ];
     }
 }
