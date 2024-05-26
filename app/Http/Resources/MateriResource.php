@@ -17,7 +17,7 @@ class MateriResource extends JsonResource
         return [
             'judul' => $this->judul,
             'konten' => $this->konten,
-            'url_youtube' => $this->url_youtube
+            'id_youtube' => end(explode('/', $this->url_youtube))
         ];
     }
 }
