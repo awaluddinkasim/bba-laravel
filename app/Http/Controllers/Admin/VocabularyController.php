@@ -33,7 +33,7 @@ class VocabularyController extends Controller
 
         Vocabulary::create($data);
 
-        return redirect()->route('kosakata')->with('success', 'Kotakata berhasil ditambah');
+        return redirect()->route('kosakata.index')->with('success', 'Kotakata berhasil ditambah');
     }
 
     public function show(Vocabulary $vocabulary): View
@@ -64,6 +64,6 @@ class VocabularyController extends Controller
     {
         $vocabulary->delete();
 
-        return redirect()->route('kosakata')->with('success', 'Kosakata berhasil dihapus');
+        return redirect()->route('kosakata.index')->with('success', 'Kosakata berhasil dihapus');
     }
 }

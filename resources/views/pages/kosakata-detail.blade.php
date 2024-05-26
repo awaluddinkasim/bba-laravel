@@ -33,7 +33,7 @@
 
             <div class="flex justify-between mt-8">
                 <button class="btn bg-secondary text-white rounded"
-                    onclick="document.location.href = '{{ route('kosakata') }}'">Kembali</button>
+                    onclick="document.location.href = '{{ route('kosakata.index') }}'">Kembali</button>
                 <div>
                     <button class="btn bg-success text-white rounded"
                         onclick="document.location.href = '{{ route('kosakata.edit', $vocabulary->id) }}'">
