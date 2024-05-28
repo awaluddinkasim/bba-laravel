@@ -18,7 +18,8 @@
             <h2 class="font-semibold text-xl">Daftar Kosakata</h2>
             <x-elements.form-modal title="Kosakata" action="{{ route('kosakata.store') }}">
                 <div class="mb-3">
-                    <label for="kataInput" class="text-gray-800 text-sm font-medium inline-block mb-2">Kata</label>
+                    <label for="kataInput" class="text-gray-800 text-sm font-medium inline-block mb-2">Kata (Bahasa
+                        Arab)</label>
                     <input type="text" id="kataInput" name="kata"
                         class="form-input @error('kata') border-danger @enderror" required>
                 </div>
