@@ -11,15 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admins', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
-        });
-
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
@@ -27,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('jk', ['L', 'P']);
-            $table->text('alamat');
+            $table->string('no_hp');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -53,7 +44,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admins');
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
