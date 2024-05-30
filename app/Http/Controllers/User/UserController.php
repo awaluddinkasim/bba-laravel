@@ -48,18 +48,20 @@ class UserController extends Controller
             'email' => 'required',
             'password' => 'nullable',
             'jk' => 'required',
-            'alamat' => 'required'
+            'no_hp' => 'required'
         ]);
 
         if ($data['password']) {
             $data['password'] = Hash::make($data['password']);
+        } else {
+            unset($data['password']);
         }
 
-        $user = User::find(request()->user()->id)->update($data);
+        User::find(request()->user()->id)->update($data);
 
         return response()->json([
             'message' => 'success',
-            'user' => new UserResource($user)
+            'user' => new UserResource(User::find(request()->user()->id))
         ], 200);
     }
 }
