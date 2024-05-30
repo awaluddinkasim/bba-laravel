@@ -14,7 +14,7 @@
         </x-elements.form-modal>
     </div>
 
-    @foreach ($daftarPercakapanHarian as $percakapanHarian)
+    @forelse ($daftarPercakapanHarian as $percakapanHarian)
         <div class="card p-5 rounded cursor-pointer mb-3"
             onclick="document.location.href = '{{ route('percakapan-harian.show', $percakapanHarian->id) }}'">
             <p class="text-xl mb-4">
@@ -28,7 +28,11 @@
                 {{ $percakapanHarian->latin }}
             </p>
         </div>
-    @endforeach
+    @empty
+        <div class="card text-center p-8 rounded-lg">
+            Tidak ada data
+        </div>
+    @endforelse
 
     {{ $daftarPercakapanHarian->links() }}
 

@@ -10,7 +10,7 @@
     <x-elements.title class="mb-3">
         Materi Terbaru
     </x-elements.title>
-    @foreach ($daftarMateri as $materi)
+    @forelse ($daftarMateri as $materi)
         <div class="card p-5 rounded cursor-pointer mb-3"
             onclick="document.location.href = '{{ route('materi.show', $materi->id) }}'">
             <h1 class="font-bold text-xl">
@@ -23,7 +23,11 @@
                 {!! Str::limit(strip_tags($materi->konten), 250) !!}
             </p>
         </div>
-    @endforeach
+    @empty
+        <div class="card text-center p-8 rounded-lg">
+            Tidak ada materi
+        </div>
+    @endforelse
 
     {{ $daftarMateri->links() }}
 </x-layout>
