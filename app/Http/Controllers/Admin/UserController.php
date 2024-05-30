@@ -18,33 +18,30 @@ class UserController extends Controller
         ]);
     }
 
-    public function show(User $user): View
-    {
-        return view();
-    }
-
     public function edit(User $user): View
     {
-        return view();
+        return view('pages.user-edit', compact('user'));
     }
 
     public function update(User $user): RedirectResponse
     {
         $data = request()->validate([
             'nama' => 'required',
-            'email' => 'required|unique:users',
+            'email' => 'required',
             'password' => 'nullable',
             'jk' => 'required',
-            'alamat' => 'required'
+            'no_hp' => 'required'
         ]);
 
         if ($data['password']) {
             $data['password'] = Hash::make($data['password']);
+        } else {
+            unset($data['password']);
         }
 
         $user->update($data);
 
-        return redirect()->back()->with('success', 'Update pengguna berhasil');
+        return redirect()->route('users.index')->with('success', 'Update pengguna berhasil');
     }
 
     public function delete(User $user): RedirectResponse

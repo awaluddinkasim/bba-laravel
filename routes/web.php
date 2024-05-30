@@ -48,7 +48,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
         Route::get('/', [UserController::class, 'index'])->name('index');
-        Route::get('/{user:id}', [UserController::class, 'show'])->name('show');
         Route::get('/{user:id}/edit', [UserController::class, 'edit'])->name('edit');
         Route::patch('/{user:id}/update', [UserController::class, 'update'])->name('update');
         Route::delete('/{user:id}', [UserController::class, 'delete'])->name('delete');
