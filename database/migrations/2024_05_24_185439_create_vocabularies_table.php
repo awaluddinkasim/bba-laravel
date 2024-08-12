@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('arti');
             $table->string('latin');
             $table->text('contoh_kalimat');
+            $table->string('audio');
             $table->timestamps();
         });
     }

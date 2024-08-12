@@ -17,7 +17,8 @@ class PercakapanHarianResource extends JsonResource
         return [
             'kalimat' => $this->kalimat,
             'arab' => $this->arab,
-            'latin' => $this->latin
+            'latin' => $this->latin,
+            'audio' => $this->audio
         ];
     }
 }

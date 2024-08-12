@@ -4,12 +4,20 @@
             Daftar Percakapan Harian
         </x-elements.title>
 
-        <x-elements.form-modal title="Percakapan Harian" action="{{ route('percakapan-harian.store') }}">
+        <x-elements.form-modal title="Percakapan Harian" action="{{ route('percakapan-harian.store') }}"
+            :hasFile="true">
             <div class="mb-3">
                 <label for="kalimatInput" class="text-gray-800 text-sm font-medium inline-block mb-2">Kalimat (Bahasa
                     Indonesia)</label>
                 <textarea name="kalimat" id="kalimatInput" rows="3" class="form-input @error('kalimat') border-danger @enderror"
                     required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="audioInput" class="text-gray-800 text-sm font-medium inline-block mb-2">
+                    Audio
+                </label>
+                <input type="file" name="audio" id="audioInput" accept="audio/*"
+                    class="form-input @error('audio') border-danger @enderror" required>
             </div>
         </x-elements.form-modal>
     </div>

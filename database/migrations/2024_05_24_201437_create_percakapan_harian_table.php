@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('kalimat');
             $table->string('arab');
             $table->string('latin');
+            $table->string('audio');
             $table->timestamps();
         });
     }

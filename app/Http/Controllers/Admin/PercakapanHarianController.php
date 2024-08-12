@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\PercakapanHarian;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\View\View;
 
 class PercakapanHarianController extends Controller
@@ -21,6 +22,7 @@ class PercakapanHarianController extends Controller
     {
         $data = request()->validate([
             'kalimat' => 'required',
+            'audio' => 'required'
         ]);
 
         $translate = translate($data['kalimat']);
@@ -28,6 +30,10 @@ class PercakapanHarianController extends Controller
         $data['arab'] = $translate['arab'];
         $data['latin'] = $translate['latin'];
 
+        $audio = request()->file('audio');
+        $filename = time() . '.' . $audio->extension();
+        $data['audio'] = $filename;
+        $audio->move(public_path('percakapan'), $filename);
 
         PercakapanHarian::create($data);
 
@@ -50,8 +56,18 @@ class PercakapanHarianController extends Controller
         $data = request()->validate([
             'kalimat' => 'required',
             'arab' => 'required',
-            'latin' => 'required'
+            'latin' => 'required',
+            'audio' => 'nullable'
         ]);
+
+        if ($data['audio']) {
+            File::delete(public_path('percakapan/' . $percakapanHarian->audio));
+
+            $audio = request()->file('audio');
+            $filename = time() . '.' . $audio->extension();
+            $data['audio'] = $filename;
+            $audio->move(public_path('percakapan'), $filename);
+        }
 
         $percakapanHarian->update($data);
 
@@ -60,6 +76,8 @@ class PercakapanHarianController extends Controller
 
     public function delete(PercakapanHarian $percakapanHarian): RedirectResponse
     {
+        File::delete(public_path('percakapan/' . $percakapanHarian->audio));
+
         $percakapanHarian->delete();
 
         return redirect()->route('percakapan-harian.index')->with('success', 'Data berhasil dihapus');

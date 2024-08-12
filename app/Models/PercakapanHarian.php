@@ -14,6 +14,7 @@ class PercakapanHarian extends Model
     protected $fillable = [
         'kalimat',
         'arab',
-        'latin'
+        'latin',
+        'audio'
     ];
 }

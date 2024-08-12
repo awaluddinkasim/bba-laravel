@@ -33,6 +33,13 @@
                         <textarea name="contoh_kalimat" id="contohInput" rows="5"
                             class="form-input @error('contoh_kalimat') border-danger @enderror" required>{{ $vocabulary->contoh_kalimat }}</textarea>
                     </div>
+                    <div class="mb-3">
+                        <label for="audioInput" class="text-gray-800 text-sm font-medium inline-block mb-2">
+                            Ganti Audio
+                        </label>
+                        <input type="file" name="audio" id="audioInput" accept="audio/*"
+                            class="form-input @error('audio') border-danger @enderror">
+                    </div>
                 </div>
 
                 <button class="btn bg-success text-white rounded">Simpan</button>

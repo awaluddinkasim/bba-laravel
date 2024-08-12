@@ -18,7 +18,8 @@ class VocabularyResource extends JsonResource
             'kata' => $this->kata,
             'latin' => $this->latin,
             'arti' => $this->arti,
-            'contoh_kalimat' => $this->contoh_kalimat
+            'contoh_kalimat' => $this->contoh_kalimat,
+            'audio' => $this->audio
         ];
     }
 }

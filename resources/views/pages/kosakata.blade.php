@@ -16,7 +16,7 @@
     <x-elements.card>
         <div class="flex justify-between items-center mb-4">
             <h2 class="font-semibold text-xl">Daftar Kosakata</h2>
-            <x-elements.form-modal title="Kosakata" action="{{ route('kosakata.store') }}">
+            <x-elements.form-modal title="Kosakata" action="{{ route('kosakata.store') }}" :hasFile="true">
                 <div class="mb-3">
                     <label for="kataInput" class="text-gray-800 text-sm font-medium inline-block mb-2">Kata (Bahasa
                         Arab)</label>
@@ -38,6 +38,13 @@
                         Kalimat</label>
                     <textarea name="contoh_kalimat" id="contohInput" rows="5"
                         class="form-input @error('contoh_kalimat') border-danger @enderror" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="audioInput" class="text-gray-800 text-sm font-medium inline-block mb-2">
+                        Audio
+                    </label>
+                    <input type="file" name="audio" id="audioInput" accept="audio/*"
+                        class="form-input @error('audio') border-danger @enderror" required>
                 </div>
             </x-elements.form-modal>
         </div>

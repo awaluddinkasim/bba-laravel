@@ -13,6 +13,7 @@ class Vocabulary extends Model
         'kata',
         'arti',
         'latin',
-        'contoh_kalimat'
+        'contoh_kalimat',
+        'audio'
     ];
 }
