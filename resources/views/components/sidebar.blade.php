@@ -48,12 +48,5 @@
             </a>
         </li>
 
-        <li class="menu-item">
-            <a href="{{ route('users.index') }}" class="menu-link">
-                <span class="menu-icon"><i class="uil uil-users-alt"></i></span>
-                <span class="menu-text"> Daftar Pengguna </span>
-            </a>
-        </li>
-
     </ul>
 </div>

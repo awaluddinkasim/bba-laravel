@@ -46,13 +46,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('/{percakapanHarian:id}', [PercakapanHarianController::class, 'delete'])->name('delete');
     });
 
-    Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
-        Route::get('/', [UserController::class, 'index'])->name('index');
-        Route::get('/{user:id}/edit', [UserController::class, 'edit'])->name('edit');
-        Route::patch('/{user:id}/update', [UserController::class, 'update'])->name('update');
-        Route::delete('/{user:id}', [UserController::class, 'delete'])->name('delete');
-    });
-
     Route::get('/profile', [AccountController::class, 'index'])->name('profile');
     Route::patch('/profile', [AccountController::class, 'update'])->name('profile.update');
 
