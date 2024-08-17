@@ -21,7 +21,7 @@
                         class="text-2xl form-input @error('arab') border-danger @enderror" required>{{ $percakapanHarian->arab }}</textarea>
                 </div>
                 <div class="mb-3">
-                    <label for="latinInput" class="text-gray-800 text-sm font-medium inline-block mb-2">Judul</label>
+                    <label for="latinInput" class="text-gray-800 text-sm font-medium inline-block mb-2">Latin</label>
                     <input type="text" id="latinInput" name="latin"
                         class="form-input @error('latin') border-danger @enderror"
                         value="{{ $percakapanHarian->latin }}" required>

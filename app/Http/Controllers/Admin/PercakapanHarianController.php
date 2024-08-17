@@ -22,13 +22,15 @@ class PercakapanHarianController extends Controller
     {
         $data = request()->validate([
             'kalimat' => 'required',
+            'arab' => 'required',
+            'latin' => 'required',
             'audio' => 'required'
         ]);
 
-        $translate = translate($data['kalimat']);
+        // $translate = translate($data['kalimat']);
 
-        $data['arab'] = $translate['arab'];
-        $data['latin'] = $translate['latin'];
+        // $data['arab'] = $translate['arab'];
+        // $data['latin'] = $translate['latin'];
 
         $audio = request()->file('audio');
         $filename = time() . '.' . $audio->extension();

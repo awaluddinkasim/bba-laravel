@@ -7,9 +7,19 @@
         <x-elements.form-modal title="Percakapan Harian" action="{{ route('percakapan-harian.store') }}"
             :hasFile="true">
             <div class="mb-3">
-                <label for="kalimatInput" class="text-gray-800 text-sm font-medium inline-block mb-2">Kalimat (Bahasa
-                    Indonesia)</label>
+                <label for="kalimatInput" class="text-gray-800 text-sm font-medium inline-block mb-2">Kalimat</label>
                 <textarea name="kalimat" id="kalimatInput" rows="3" class="form-input @error('kalimat') border-danger @enderror"
+                    required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="arabInput" class="text-gray-800 text-sm font-medium inline-block mb-2">Bahasa
+                    Arab</label>
+                <textarea name="arab" id="arabInput" rows="3" class="form-input @error('arab') border-danger @enderror"
+                    required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="latinInput" class="text-gray-800 text-sm font-medium inline-block mb-2">Latin</label>
+                <textarea name="latin" id="latinInput" rows="3" class="form-input @error('latin') border-danger @enderror"
                     required></textarea>
             </div>
             <div class="mb-3">
